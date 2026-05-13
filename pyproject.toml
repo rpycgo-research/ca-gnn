@@ -1,0 +1,63 @@
+[project]
+name = "ca-gnn"
+version = "0.1.0"
+description = "Camouflage-aware graph learning framework for financial risk detection"
+readme = "README.md"
+authors = [
+    { name = "rpycgo", email = "skyd0608@gmail.com" }
+]
+requires-python = ">=3.12,<3.13"
+
+dependencies = [
+    "lightgbm>=4.6.0",
+    "matplotlib>=3.10.9",
+    "networkx>=3.6.1",
+    "numpy>=2.4.4",
+    "pandas>=3.0.3",
+    "polars>=1.40.1",
+    "pyarrow>=24.0.0",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.14.1",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.8.0",
+    "tqdm>=4.67.3",
+]
+
+[project.optional-dependencies]
+notebook = [
+    "ipykernel>=7.2.0",
+    "jupyterlab>=4.5.7",
+]
+graph = [
+    "lightning>=2.6.1",
+    "torch>=2.12.0",
+    "torch-geometric>=2.7.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.0,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.1.0",
+    "pre-commit>=4.6.0",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.13",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
